@@ -1,0 +1,31 @@
+{  
+  "manifest_version": 3,  
+  "name": "Simple Ad Blocker",  
+  "version": "1.0",  
+  "permissions": [  
+    "cookies",  
+    "declarativeNetRequest",  
+    "declarativeNetRequestWithHostAccess",  
+    "storage",  
+    "tabs",  
+    "activeTab"  
+  ],  
+  "background": {  
+    "service_worker": "background.js"  
+  },  
+  "content_scripts": [{  
+    "js": ["content.js"],  
+    "run_at": "document_idle",  
+    "matches": ["<all_urls>"]  
+  }],  
+  "declarative_net_request": {  
+    "rule_resources": [{  
+      "id": "ruleset",  
+      "enabled": true,  
+      "path": "rules.json"  
+    }]  
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }  
+}
